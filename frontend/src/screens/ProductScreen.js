@@ -13,45 +13,29 @@ import LoadingBox from '../component/LoadingBox';
 import MessageBox from '../component/MessageBox';
 import { getError } from '../utils';
 import { Store } from '../Store';
+import useSWR from 'swr';
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'FETCH_REQUEST':
-      return { ...state, loading: true };
-    case 'FETCH_SUCCESS':
-      return { ...state, product: action.payload, loading: false };
-    case 'FETCH_FAILED':
-      return { ...state, loading: false, error: action.payload };
-    default:
-      return state;
-  }
-};
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
+function useProduct(slug) {
+  const { data, error, isLoading } = useSWR(
+    `/api/products/slug/${slug}`,
+    fetcher
+  );
+
+  return {
+    product: data,
+    error: error,
+    isLoading,
+  };
+}
 
 export default function ProductScreen() {
   const navigate = useNavigate();
   const params = useParams();
   const { slug } = params;
 
-  const [{ loading, error, product }, dispatch] = useReducer(reducer, {
-    product: [],
-    loading: true,
-    error: '',
-  });
-  //   const [products, setProducts] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      dispatch({ type: 'FETCH_REQUEST' });
-      try {
-        const result = await axios.get(`/api/products/slug/${slug}`);
-        dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
-      } catch (err) {
-        dispatch({ type: 'FETCH_FAILED', payload: getError(err) });
-      }
-    };
-
-    fetchData();
-  }, [slug]);
-
+  const { product, error, isLoading } = useProduct(slug);
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart } = state;
   const addToCartHandler = async () => {
@@ -70,7 +54,7 @@ export default function ProductScreen() {
     navigate('/cart');
   };
 
-  return loading ? (
+  return isLoading ? (
     <LoadingBox />
   ) : error ? (
     <MessageBox variant="danger">{error}</MessageBox>
