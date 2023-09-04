@@ -12,7 +12,7 @@ import ProductScreen from './screens/ProductScreen';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Badge from 'react-bootstrap/Badge';
-import NavDropDown from 'react-bootstrap/NavDropDown';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import Container from 'react-bootstrap/Container';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useContext, useEffect, useState } from 'react';
@@ -95,14 +95,14 @@ function App() {
                     )}
                   </Link>
                   {userInfo ? (
-                    <NavDropDown title={userInfo.name} id="basic-nav-dropdown">
+                    <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
                       <LinkContainer to="/profile">
-                        <NavDropDown.Item>User Profile</NavDropDown.Item>
+                        <NavDropdown.Item>User Profile</NavDropdown.Item>
                       </LinkContainer>
                       <LinkContainer to="/orderhistory">
-                        <NavDropDown.Item>Order History</NavDropDown.Item>
+                        <NavDropdown.Item>Order History</NavDropdown.Item>
                       </LinkContainer>
-                      <NavDropDown.Divider />
+                      <NavDropdown.Divider />
                       <Link
                         className="dropdown-item"
                         to="#signout"
@@ -110,7 +110,7 @@ function App() {
                       >
                         Sign Out
                       </Link>
-                    </NavDropDown>
+                    </NavDropdown>
                   ) : (
                     <Link className="nav-link" to="/signin">
                       Sign In
