@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Store } from '../Store';
 import { getError } from '../utils';
 import Button from 'react-bootstrap/Button';
-import LoadingBox from '../component/LoadingBox';
+import LoadingBox from '../component/LoadingBox/LoadingBox';
 import MessageBox from '../component/MessageBox';
 
 const reducer = (state, action) => {

@@ -8,10 +8,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import LinkContainer from 'react-router-bootstrap/LinkContainer';
-import LoadingBox from '../component/LoadingBox';
+import LoadingBox from '../component/LoadingBox/LoadingBox';
 import MessageBox from '../component/MessageBox';
-import Rating from '../component/Rating';
-import Product from '../component/Product';
+import Rating from '../component/Rating/Rating';
+import Product from '../component/Product/Product';
 
 const reducer = (state, action) => {
   switch (action.type) {

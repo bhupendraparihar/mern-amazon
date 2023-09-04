@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useReducer } from 'react';
-import LoadingBox from '../component/LoadingBox';
+import LoadingBox from '../component/LoadingBox/LoadingBox';
 import MessageBox from '../component/MessageBox';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
