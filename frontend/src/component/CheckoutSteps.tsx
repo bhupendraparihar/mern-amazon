@@ -2,7 +2,13 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-export default function CheckoutSteps(props) {
+type CheckoutStepsProps = {
+  step1?: boolean;
+  step2?: boolean;
+  step3?: boolean;
+  step4?: boolean;
+};
+export default function CheckoutSteps(props: CheckoutStepsProps) {
   return (
     <Row className="checkout-steps">
       <Col className={props.step1 ? 'active' : ''}>Sign-In</Col>

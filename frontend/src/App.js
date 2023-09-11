@@ -31,6 +31,7 @@ import axios from 'axios';
 import { getError } from './utils';
 import Button from 'react-bootstrap/Button';
 import SearchBox from './component/SearchBox';
+import React from 'react';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);

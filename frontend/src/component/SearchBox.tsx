@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -9,7 +9,7 @@ export default function SearchBox() {
   const navigate = useNavigate();
   const [query, setQuery] = useState('');
 
-  const submitHandler = (e) => {
+  const submitHandler = (e: FormEvent) => {
     e.preventDefault();
     navigate(query ? `/search/?query=${query}` : '/search');
   };
