@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-toastify';
 import { getError } from '../utils';
 import axios from 'axios';
+import Action from '../enums/Action';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -50,7 +51,7 @@ export default function ProfileScreen() {
       );
 
       dispatch({ type: 'UPDATE_SUCCESS' });
-      ctxDispatch({ type: 'USER_SIGNIN', payload: data });
+      ctxDispatch({ type: Action.USER_SIGN_IN, payload: data });
       localStorage.setItem('userInfo', JSON.stringify(data));
       toast.success('User updated successfully');
     } catch (err) {

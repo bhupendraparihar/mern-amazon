@@ -32,13 +32,14 @@ import { getError } from './utils';
 import Button from 'react-bootstrap/Button';
 import SearchBox from './component/SearchBox';
 import React from 'react';
+import ActionEnum from './enums/Action';
 
 function App() {
-  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { state, dispatch: ctxDispatch } = useContext(Store)!;
   const { cart, userInfo } = state;
 
   const signoutHandler = () => {
-    ctxDispatch({ type: 'USER_SIGNOUT' });
+    ctxDispatch({ type: ActionEnum.USER_SIGN_OUT });
     localStorage.removeItem('userInfo');
     localStorage.removeItem('shippingAddress');
     localStorage.removeItem('paymentMethod');
@@ -91,7 +92,10 @@ function App() {
                     Cart
                     {cart.cartItems.length > 0 && (
                       <Badge pill bg="danger">
-                        {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                        {cart.cartItems.reduce(
+                          (a: any, c: any) => a + c.quantity,
+                          0
+                        )}
                       </Badge>
                     )}
                   </Link>

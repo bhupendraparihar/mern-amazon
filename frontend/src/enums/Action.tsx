@@ -1,0 +1,11 @@
+enum ActionEnum {
+  CART_ADD_ITEM,
+  CART_REMOVE_ITEM,
+  CART_CLEAR,
+  USER_SIGN_IN,
+  USER_SIGN_OUT,
+  SAVE_SHIPPING_ADDRESS,
+  SAVE_PAYMENT_METHOD,
+}
+
+export default ActionEnum;

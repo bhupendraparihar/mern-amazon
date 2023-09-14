@@ -8,6 +8,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Store } from '../Store';
 import { toast } from 'react-toastify';
 import { getError } from '../utils';
+import Action from '../enums/Action';
 
 export default function SignupScreen() {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ export default function SignupScreen() {
       });
 
       ctxDispatch({
-        type: 'USER_SIGNIN',
+        type: Action.USER_SIGN_IN,
         payload: data,
       });
 
